@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/GregorHorvatH/goit-js-68/issues"
   },
-  "homepage": "https://GregorHorvatH.github.io/goit-js-68",
+  "homepage": "https://mentallaboretories.github.io/goit-js-68",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
