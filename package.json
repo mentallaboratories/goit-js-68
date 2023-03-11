@@ -1,7 +1,7 @@
 {
   "name": "goit-js-68",
   "version": "1.0.0",
-  "description": "",
+  "description": "- встановити плагін Prettier в VS Code\r - \"editor.formatOnSave\": true",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.mode development",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GregorHorvatH/goit-js-68.git"
+    "url": "git+https://github.com/mentallaboratories/goit-js-68.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GregorHorvatH/goit-js-68/issues"
   },
-  "homepage": "https://mentallaboretories.github.io/goit-js-68",
+  "homepage": "https://mentallaboratories.github.io/goit-js-68",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -39,9 +39,9 @@
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.5.0",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.3",
     "webpack-merge": "^4.2.1",
     "webpackbar": "^3.2.0"
   },
@@ -49,6 +49,9 @@
     "basiclightbox": "^5.0.4",
     "express": "^4.18.2",
     "handlebars": "^4.1.2",
+    "nodemon": "^2.0.21",
+    "nvp": "^1.0.1",
+    "react-scripts": "^5.0.1",
     "simplelightbox": "^2.11.0"
   }
 }

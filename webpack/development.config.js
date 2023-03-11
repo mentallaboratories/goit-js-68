@@ -1,26 +1,59 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpackMerge = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
-module.exports = env => ({
-  devtool: 'cheap-eval-source-map',
-  module: {
-    rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader', 'postcss-loader'],
-      // },
-    ],
-  },
-  plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    historyApiFallback: true,
-    compress: true,
-    port: 4040,
-    noInfo: true,
-    quiet: true,
-    clientLogLevel: 'warning',
-    stats: 'errors-only',
-    open: true,
-  },
-});
+const loadModeConfig = env => require(`./webpack/${env.mode}.config`)(env);
+
+module.exports = env =>
+  webpackMerge(
+    {
+      mode: env.mode,
+      context: path.resolve(__dirname, 'src'),
+      entry: './index.js',
+      output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.css$/,
+            use: ['style-loader','css-loader'],
+          },
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ['babel-loader'],
+          },
+          {
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  name: '[path]/[name].[ext]',
+                  limit: 5000,
+                },
+              },
+            ],
+          },
+          {
+            test: /\.html$/,
+            use: 'html-loader',
+          },
+          {
+            test: /\.hbs$/,
+            use: 'handlebars-loader',
+          },
+        ],
+      },
+      plugins: [
+        new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
+        new WebpackBar(),
+      ],
+    },
+    loadModeConfig(env),
+  );
